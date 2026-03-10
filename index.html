@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Numbers</title>
+</head>
+<body>
+   <body>
+    <H1> Random Number Generator </H1>
+    <button onclick="generateRandomNumber()">Generate Random Number</button>
+    <p id="random-number"></p>
+    <p id="coin"></p>
+    <script>
+        const randomParagraph = document.createElement("p");
+        randomParagraph.textContent = "coin Result will be displayed here."
+        randomParagraph.
+
+        function generateRandomNumber() {
+            randomNumber = Math.random();
+            document.getElementById("random-number").innerHTML = "Random Number Generated: " + randomNumber;
+
+            if (randomNumber<0.5){
+                coin = "Heads";
+            }
+                else { 
+                coin="Tails";
+            }
+
+
+            // const randomNumber = Math.floor(Math.random() * 100) + 1; // Generates a random number between 1 and 100
+            // document.getElementById('random-number').textContent = `Generated Random Number: ${randomNumber}`;
+        }
+       
+    </script>
+</body>
+</html>
+
+<!-- <body>
+    <h1> Random Number Generator</h1>
+    <button onclick="generateRandomNumber()"> Generate Random Number</button>
+    <p id = "randomNumber"></p>
+    <p id = "coin"></p>
+<script>
+        //create a paragraph element to display the random number
+        const randomParagraph = document.createElement('p');
+        randomParagraph.textContent = "coin result will be displayed here: ";
+        randomParagraph.id = "Coin";
+        document.body.appendChild(randomParagraph);
+       
+        function generateRandomNumber() 
+        {
+            randomNumber = Math.random();
+            document.getElementById('randomNumber').innerHTML = "Random Number Generated:" + randomNumber;
+            //interpretor
+            if (randomNumber < 0.5) 
+            {
+                coin = "Heads";
+                
+            }
+            else {
+                coin = "Tails";
+            }
+            document.getElementById('coin').textContent = "Coin Flip Result:" + coin;
+        }
+    </script> -->
