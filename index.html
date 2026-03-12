@@ -4,56 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Numbers</title>
+    
+    
 </head>
 <body>
-    <h1> Random Number Generator </h1>
-    <button onclick="generateRandomNumber()">Generate Random Number</button>
+
+    <h1 id="mainTitle"> Random Number Generator </h1>    
+    <button id="genBtn" onclick="generateRandomNumber()">Generate Random Number</button>
+        
+    <div style="text-align: center; margin-top: 20px;">
+        <!-- Change your img tag to this -->
+<img id="coinImage" src="" style="display: none; width: 250px; height: auto; border-radius: 50%; margin: 20px auto;">
+
+    </div>
+
+    <p id="random-numberID"></p>
     
-    <p id="random-number"></p>
-    <p id="coin">Coin Result will be displayed here.</p>
-
     <script>
-        function generateRandomNumber() {
-            // 1. Generate the number
-            let randomNumber = Math.random();
-            
-            // 2. Decide Heads or Tails
-            let coinResult = (randomNumber < 0.5) ? "Heads" : "Tails";
+        // --- STYLING THE BUTTON ON LOAD ---
+        const btn = document.getElementById("genBtn");
+        btn.style.display = "block";
+        btn.style.margin = "20px auto";
+        btn.style.padding = "10px 20px";
+        btn.style.fontSize = "18px";
+        btn.style.cursor = "pointer";
 
-            // 3. Update the HTML elements
-            document.getElementById("random-number").textContent = "Random Number Generated: " + randomNumber.toFixed(4);
-            document.getElementById("coin").textContent = "Result: " + coinResult;
+        // --- THE MAIN FUNCTION ---
+        function generateRandomNumber() {
+            // 1. SELECT ELEMENTS
+            const title = document.getElementById("mainTitle");
+            const btn = document.getElementById("genBtn");
+            const coinImg = document.getElementById("coinImage");
+
+            // 2. GENERATE COLORS
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+
+            const r2 = Math.floor(Math.random() * 256);
+            const g2 = Math.floor(Math.random() * 256);
+            const b2 = Math.floor(Math.random() * 256);
+
+            // 3. APPLY STYLES
+            title.style.textAlign = "center";
+            title.style.backgroundColor = `rgb(${b}, ${r}, ${g})`; 
+            title.style.color = `rgb(${r}, ${g}, ${b})`;
+            title.style.padding = "20px";
+
+            btn.style.backgroundColor = `rgb(${r2}, ${g2}, ${b2})`;
+            btn.style.color = "white";
+
+            // 4. GENERATE RANDOM NUMBER & LOGIC
+            let randomNumber = Math.random();
+            let coinValue = Math.floor(randomNumber * 2) + 1;
+            let coin = (coinValue === 1) ? "Heads" : "Tails";
+            let diceValue = Math.floor(randomNumber * 6) + 1;
+
+            // 5. UPDATE TEXT
+            document.getElementById("random-numberID").textContent = `Random Number Generated: ${randomNumber}`;
+            document.getElementById("coinID").textContent = `Coin Flip Result: ${coin}`;
+            document.getElementById("diceID").textContent = `Dice Value: ${diceValue}`;
+
+        // 6. UPDATE IMAGE (Full links for Irish 10 Pence)
+    coinImg.style.display = "block"; 
+    coinImg.style.margin = "20px auto";
+    coinImg.style.width = "200px";  
+    coinImg.style.height = "auto";
+
+    if (coin === "Heads") {
+        // Full link for the Irish Harp
+        coinImg.src = "images/harp.png";
+        coinImg.alt = "Irish Harp (Heads)";
+    } else {
+        // Full link for the Irish Salmon
+        coinImg.src = "images/salmon.png";
+        coinImg.alt = "Irish Salmon (Tails)";
+    }
+
+    
+
         }
+
+        // --- CREATE PARAGRAPHS ON LOAD ---
+        const coinParagraph = document.createElement("p");
+        coinParagraph.id = "coinID";
+        coinParagraph.textContent = "Coin Result will be displayed here.";
+        document.body.appendChild(coinParagraph);
+
+        const diceParagraph = document.createElement("p");
+        diceParagraph.id = "diceID";
+        diceParagraph.textContent = "Dice Value will be displayed here.";
+        document.body.appendChild(diceParagraph);
+
     </script>
 </body>
 </html>
 
-
-<!-- <body>
-    <h1> Random Number Generator</h1>
-    <button onclick="generateRandomNumber()"> Generate Random Number</button>
-    <p id = "randomNumber"></p>
-    <p id = "coin"></p>
-<script>
-        //create a paragraph element to display the random number
-        const randomParagraph = document.createElement('p');
-        randomParagraph.textContent = "coin result will be displayed here: ";
-        randomParagraph.id = "Coin";
-        document.body.appendChild(randomParagraph);
-       
-        function generateRandomNumber() 
-        {
-            randomNumber = Math.random();
-            document.getElementById('randomNumber').innerHTML = "Random Number Generated:" + randomNumber;
-            //interpretor
-            if (randomNumber < 0.5) 
-            {
-                coin = "Heads";
-                
-            }
-            else {
-                coin = "Tails";
-            }
-            document.getElementById('coin').textContent = "Coin Flip Result:" + coin;
-        }
-    </script> -->
