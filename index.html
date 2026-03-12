@@ -6,35 +6,28 @@
     <title>Random Numbers</title>
 </head>
 <body>
-   <body>
-    <H1> Random Number Generator </H1>
+    <h1> Random Number Generator </h1>
     <button onclick="generateRandomNumber()">Generate Random Number</button>
+    
     <p id="random-number"></p>
-    <p id="coin"></p>
+    <p id="coin">Coin Result will be displayed here.</p>
+
     <script>
-        const randomParagraph = document.createElement("p");
-        randomParagraph.textContent = "coin Result will be displayed here."
-        randomParagraph.
-
         function generateRandomNumber() {
-            randomNumber = Math.random();
-            document.getElementById("random-number").innerHTML = "Random Number Generated: " + randomNumber;
+            // 1. Generate the number
+            let randomNumber = Math.random();
+            
+            // 2. Decide Heads or Tails
+            let coinResult = (randomNumber < 0.5) ? "Heads" : "Tails";
 
-            if (randomNumber<0.5){
-                coin = "Heads";
-            }
-                else { 
-                coin="Tails";
-            }
-
-
-            // const randomNumber = Math.floor(Math.random() * 100) + 1; // Generates a random number between 1 and 100
-            // document.getElementById('random-number').textContent = `Generated Random Number: ${randomNumber}`;
+            // 3. Update the HTML elements
+            document.getElementById("random-number").textContent = "Random Number Generated: " + randomNumber.toFixed(4);
+            document.getElementById("coin").textContent = "Result: " + coinResult;
         }
-       
     </script>
 </body>
 </html>
+
 
 <!-- <body>
     <h1> Random Number Generator</h1>
